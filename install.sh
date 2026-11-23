@@ -105,7 +105,7 @@ if [ ! -f "$state_dir/eula-accepted" ]; then
     : > "$state_dir/eula-accepted"
     chmod 0600 "$state_dir/eula-accepted"
   else
-    printf '\nMinecraft EULA\nHave you read and accepted it?\n  Input [y/N]: '
+    printf '\nMinecraft EULA\nHave you read and accepted it? [y/N]: '
     IFS= read -r eula_consent </dev/tty || exit 1
     case "$eula_consent" in
       y|Y|yes|YES) : > "$state_dir/eula-accepted"; chmod 0600 "$state_dir/eula-accepted" ;;
@@ -126,7 +126,7 @@ docker_host=${DOCKER_HOST:-$(legacy_value DOCKER_HOST)}
 docker_context=${DOCKER_CONTEXT:-$(legacy_value DOCKER_CONTEXT)}
 
 if [ "$reenroll" -eq 1 ] || { [ ! -f "$state_dir/agent-token" ] && [ ! -f "$state_dir/personal-token" ] && [ ! -f "$state_dir/enrollment-code" ]; }; then
-  printf '\nOne-time enrollment code from the dashboard\n  Input: '
+  printf '\nOne-time code from the dashboard: '
   terminal_settings=$(stty -g)
   trap 'stty "$terminal_settings"' EXIT HUP INT TERM
   stty -echo
