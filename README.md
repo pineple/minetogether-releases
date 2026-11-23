@@ -12,15 +12,6 @@ curl -fsSL https://raw.githubusercontent.com/pineple/minetogether-releases/main/
 
 Node Agent API 기본 주소는 `https://minetogether.pineple.com/api/internal/node-agent`이며 설치 중 묻지 않습니다. 대시보드에서 발급한 기기 등록 코드를 입력하면 Agent가 설치되고 시작됩니다.
 
-개발 서버에 연결할 때는 `NODE_AGENT_API_URL`로 API 주소를 덮어씁니다. 개발 PC의 사설 IP가 `192.168.1.10`인 경우:
-
-```sh
-curl -fsSL https://raw.githubusercontent.com/pineple/minetogether-releases/main/install.sh \
-  | NODE_AGENT_API_URL=http://192.168.1.10:3000/api/internal/node-agent sh
-```
-
-기존 Agent의 API 주소를 바꿀 때는 월드를 모두 중지한 뒤 `systemctl --user stop minetogether-personal-agent`를 실행하고 위 명령을 사용합니다.
-
 게임 주소와 Minecraft EULA 동의 여부는 설치 중 입력합니다. 각 입력 항목은 줄을 나누어 안내합니다. 설정은 `~/.config/minetogether/personal-agent/agent.env`에 저장됩니다.
 
 지원 환경은 Linux amd64와 systemd 사용자 서비스입니다. Docker Engine과 `docker` CLI가 필요합니다. 설치 후 대시보드에서 기기 연결 상태를 확인할 수 있습니다.
