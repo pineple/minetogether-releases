@@ -25,4 +25,8 @@ curl -fsSL "$release_url/$package" -o "$install_tmp/$package"
 curl -fsSL "$release_url/$package.sha256" -o "$install_tmp/$package.sha256"
 (cd "$install_tmp" && sha256sum -c "$package.sha256")
 tar -xzf "$install_tmp/$package" -C "$install_tmp"
-"$install_tmp/install.sh" "$@"
+if [ ! -r /dev/tty ]; then
+  echo "Run this installer from an interactive terminal." >&2
+  exit 1
+fi
+"$install_tmp/install.sh" "$@" </dev/tty

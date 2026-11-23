@@ -4,7 +4,7 @@
 
 ## 빠른 설치
 
-Docker Engine이 설치되어 있고, 설치할 사용자로 `docker info`가 성공하는 기기에서 실행하세요. `sudo`는 필요하지 않습니다.
+Docker Engine이 설치되어 있고, 설치할 사용자로 `docker info`가 성공하는 기기의 대화형 터미널에서 실행하세요. `sudo`는 필요하지 않습니다.
 
 ```sh
 curl -fsSL https://raw.githubusercontent.com/pineple/minetogether-releases/main/install.sh | sh
