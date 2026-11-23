@@ -178,7 +178,7 @@ for setting in \
   fi
 done
 cat >> "$service_path" <<EOF
-WorkingDirectory="$(unit_escape "$agent_dir")"
+WorkingDirectory=$(unit_escape "$agent_dir")
 ExecStart="$(unit_escape "$binary_path")" worker
 Restart=on-failure
 RestartSec=5
