@@ -127,11 +127,11 @@ docker_context=${DOCKER_CONTEXT:-$(legacy_value DOCKER_CONTEXT)}
 
 if [ "$reenroll" -eq 1 ] || { [ ! -f "$state_dir/agent-token" ] && [ ! -f "$state_dir/personal-token" ] && [ ! -f "$state_dir/enrollment-code" ]; }; then
   printf '\nOne-time code from the dashboard: '
-  terminal_settings=$(stty -g)
-  trap 'stty "$terminal_settings"' EXIT HUP INT TERM
-  stty -echo
+  terminal_settings=$(stty -g </dev/tty)
+  trap 'stty "$terminal_settings" </dev/tty' EXIT HUP INT TERM
+  stty -echo </dev/tty
   IFS= read -r code </dev/tty
-  stty "$terminal_settings"
+  stty "$terminal_settings" </dev/tty
   trap 'rm -rf "$install_tmp"' EXIT HUP INT TERM
   printf '\n'
   case "$code" in ''|*[!a-zA-Z0-9_-]*) echo "Invalid enrollment code." >&2; exit 1 ;; esac
