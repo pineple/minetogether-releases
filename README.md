@@ -23,11 +23,8 @@ journalctl --user -u minetogether-agent -f
 
 ## 업데이트 또는 재등록
 
-기존 월드를 모두 중지하세요. Agent 서비스를 중지한 다음 대시보드에서 등록할 환경의 새 기기 코드를 발급받습니다. 코드는 32자이며 15분 뒤 만료됩니다.
+실행 중인 월드가 모두 중지된 뒤 설치 명령을 다시 실행하세요. 등록을 새로 해야 한다면 `--re-enroll`을 전달합니다.
 
 ```sh
-systemctl --user stop minetogether-agent
 curl -fsSL https://raw.githubusercontent.com/pineple/minetogether-agent/main/install.sh | sh -s -- --re-enroll
 ```
-
-설치 프로그램이 코드를 물으면 새로 발급한 코드를 입력하세요. `--re-enroll`은 Agent 인증 정보를 교체하고 기기 ID와 EULA 동의 기록은 유지합니다.
